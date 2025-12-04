@@ -17,18 +17,19 @@ Clone the repository: git clone [cd IS4010-final-spotsaver](https://github.com/j
 
 Install dependencies: pip install -r requirements.txt
 
-**Usage**
+**Usage:**
 1. Park your car: python src/main.py park --loc "Campus Garage B, Level 3" --hours 2 --mins 30
 
 2. Check status: python src/main.py status
 
 3. Clear session: python src/main.py clear
 
-**Testing**
+**Testing:**
 Run the automated test suite: pytest
 
-**AI Assistance**
+**AI Assistance:**
 This project was developed with the assistance of Gemini for logic verification and CI/CD setup. See for details.
 
-**Contact**
+**Contact:**
+
 **Mariah Jenkins** (jenkim2003) Project Link: https://github.com/jenkim2003/IS4010-final-spotsaver
