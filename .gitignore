@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.spotsaver_data.json
+test_parking_data.json
+.DS_Store
