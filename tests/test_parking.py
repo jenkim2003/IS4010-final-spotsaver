@@ -1,6 +1,7 @@
 import pytest
 import sys
 import os
+import json
 from pathlib import Path
 
 # This logic adds the 'src' folder to Python's list of places to look for code
@@ -36,11 +37,23 @@ def test_park_stores_correct_data(manager):
     assert ticket["location"] == "Gym Lot"
     assert ticket["duration_minutes"] == 90 # 1 hour + 30 mins
 
-def test_clear_removes_file(manager):
-    """Test that clearing the parking deletes the file."""
+def test_clear_empties_file(manager):
+    """Test that clearing the parking empties the file instead of deleting it."""
+    # 1. Park a car
     manager.park_car("Test Spot", 1)
+    
+    # 2. Clear the spot
     manager.clear_parking()
-    assert not TEST_DB_FILE.exists()
+    
+    # 3. CHANGED: The file should STILL exist (so the user sees the file)
+    assert TEST_DB_FILE.exists()
+    
+    # 4. CHANGED: But the file should be empty (an empty JSON object {})
+    with open(TEST_DB_FILE, 'r') as f:
+        data = json.load(f)
+    assert data == {}
+
+    # 5. Internal state should be None
     assert manager.current_ticket is None
 
 def test_status_message(manager):
